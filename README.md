@@ -7,7 +7,7 @@
 - add name fullstack-app and register app
 - follow it
 - npm install firebase
-- config -- src create a folder // contect to api and stuff
+- config -- src create a folder // connect to api and stuff
 - firebase.ts in config
 - Authentication
 - Google - click it and click Enable add the email -- to connect to the authentication (and app)
@@ -27,3 +27,102 @@
 - npm i react-firebase-hooks
 - const [user] = useAuthState(auth);
 - you can login with diff accounts
+
+---
+
+- set up the database
+- console.firebase.google.com
+- Project Overview
+- Build
+- Firestore Database
+- Create database => Start in production mode => next => pick location us-central is fine (db is hosted in us-central - closest to me)
+- Cloud Firestore page
+- Start collection (like MongoDB -- table)
+- document is like an entry
+- create document name posts
+- Document parent path -> /posts
+- Document ID -> AutoId
+- Field Type Value
+- looks like an obj ... below
+
+```
+description
+"Hurricane Clinton is coming soon!"
+id
+"xxggrrr88"
+title
+"Breaking News"
+username
+"Gluay20"
+```
+
+- Folder Structure
+- create-post folder => create-form.tsx and create-post.tsx
+
+- Form Library - react
+- npm i react-hook-form yup @hookform/resolvers
+- "@hookform/resolvers": "^2.9.8"
+
+- create-form.tsx
+
+```
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+```
+
+```
+const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
+```
+
+- add the interface type to useForm
+
+```
+useForm<CreateFormData>
+```
+
+- config => firebase.ts
+- import { getFirestore } from "firebase/firestore";
+- export const db = getFirestore(app);
+
+- create-form.tsx page
+  import { addDoc, collection } from "firebase/firestore";
+
+addDoc is a function from firestore
+collection - which collection we refer to...
+
+- import { db } from "../../config/firebase";
+
+```
+ const postsRef = collection(db, "posts");
+```
+
+- create-form.tsx
+  import { auth, db } from "../../config/firebase";
+  and
+  const [user] = useAuthState(auth);
+
+\*\*\* createFormControl.ts:1072 Uncaught (in promise) FirebaseError: Missing or insufficient permissions.
+
+\*\*\* change the authentication write, read, delete
+
+- Cloud Firestore
+- Rules
+- OG allow read, write: if false;
+  allow write: if request.auth != null && request.auth.uId == request.resource.data.userId;
+
+add delete, update in firestore
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow write, delete, update: if request.auth != null && request.auth.uid == request.resource.data.userId;
+      allow read: if request.auth != null;
+    }
+  }
+}
+```

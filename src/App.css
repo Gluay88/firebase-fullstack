@@ -44,6 +44,53 @@ body {
   border-radius: 50%;
 }
 
+form {
+  background-color: #e6e6e6;
+  width: 45vw;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  padding: 2rem 0;
+}
+
+::placeholder {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 0.75rem;
+}
+
+input {
+  width: 30vw;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+textarea {
+  width: 30vw;
+  height: 6rem;
+  border-radius: 0.25rem;
+  border: none;
+  padding-top: 0.5rem;
+}
+
+.submitForm {
+  width: 20%;
+  height: 2.5rem;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 5rem;
+  background-color: #024b68;
+  color: white;
+  font-weight: bold;
+}
+.submitForm:hover {
+  cursor: pointer;
+  background-color: white;
+  border: 0.15rem solid #024b68;
+  color: #024b68;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
