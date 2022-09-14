@@ -133,9 +133,7 @@ service cloud.firestore {
 - import {getDocs} from "firebase/firestore"
 - destruction data =>
 
-```console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-
-```
+console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 
 - define useState<Post[]> => from interface Post
 - array of post
