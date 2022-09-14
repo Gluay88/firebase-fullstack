@@ -126,3 +126,52 @@ service cloud.firestore {
   }
 }
 ```
+
+---
+
+- main.tsx => getDocs function
+- import {getDocs} from "firebase/firestore"
+- destruction data =>
+
+```console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+
+```
+
+- define useState<Post[]> => from interface Post
+- array of post
+
+```
+setPostsList(
+      data.docs.map((doc) => ({ ...doc.data(), id: doc.id })) as Post[]
+    );
+```
+
+- as Post[]
+
+\*\*\* add likes collection into the firestore - google
+
+- Firestore Data
+- Start collection => likes
+
+\*\*\* get how many likes by using query from firestore
+
+- import {where} from "firebase/firestore"
+- postId => field / == / post.id
+
+```
+const likesDoc = query(likesRef, where("postId", "==", post.id));
+```
+
+- add delete
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow write, delete, update: if request.auth != null && request.auth.uid == request.resource.data.userId;
+      allow read, delete: if request.auth != null;
+    }
+  }
+}
+```

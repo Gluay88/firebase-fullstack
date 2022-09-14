@@ -75,7 +75,8 @@ textarea {
 }
 
 .submitForm {
-  width: 20%;
+  width: auto;
+  padding: 0 0.75rem;
   height: 2.5rem;
   font-size: 1rem;
   text-align: center;
