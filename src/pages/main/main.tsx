@@ -31,6 +31,7 @@ export const Main = () => {
 
   return (
     <>
+      <h1>Kendrick Lamar Appreciation Moment!! 👽</h1>
       <div>
         {postsList?.map((post) => (
           <Post post={post} key={post.id} />

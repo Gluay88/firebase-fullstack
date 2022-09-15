@@ -84,9 +84,9 @@ export const Post = (props: Props) => {
   }, []);
 
   return (
-    <>
+    <div className="container">
       <div className="title">
-        <h1>{post.title}</h1>
+        <h2>{post.title}</h2>
       </div>
       <div className="body">
         <p>{post.description}</p>
@@ -99,6 +99,6 @@ export const Post = (props: Props) => {
         {likes && <p>Likes: {likes.length}</p>}
         {/* ctrl comd space */}
       </div>
-    </>
+    </div>
   );
 };
