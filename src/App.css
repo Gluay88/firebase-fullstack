@@ -26,6 +26,19 @@ body {
   margin: 10px;
 }
 
+.logoutBtn {
+  background-color: rgb(212, 212, 212);
+  color: rgb(77, 77, 77);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  margin-left: 1.5rem;
+}
+.logoutBtn:hover {
+  background-color: #c2de6b;
+  color: rgb(77, 77, 77);
+}
+
 .navbar .links a:hover {
   color: rgb(170, 170, 170);
 }

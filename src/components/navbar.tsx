@@ -29,7 +29,7 @@ export const Navbar = () => {
             <>
               <p>{user?.displayName}</p>
               <img src={user?.photoURL || ""} width="20" height="20" />
-              <button onClick={signUserOut} style={{ marginLeft: "0.5rem" }}>
+              <button onClick={signUserOut} className="logoutBtn">
                 Logout
               </button>
             </>
